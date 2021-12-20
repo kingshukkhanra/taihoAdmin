@@ -1,0 +1,15 @@
+    <div class="mb-2">
+      <div class="domain-wrapper" *ngFor="let domain of data; let i= index;">
+        <div class="domain"  (click)="onDomainClick(domain.domainName)" [ngClass]="{activeDomain:domain.domainName == selectedDomainName}"> 
+          {{domain.domainName}}  
+        </div>
+      </div>
+
+      <button class="domainTab text-center" (click)="onNewDomainClick('newDomain')" data-toggle="tooltip" data-placement="right" 
+              title="Configure a new Domain"> 
+        <span>+</span>
+      </button>
+    </div>
+
+
+
