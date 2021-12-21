@@ -1,14 +1,15 @@
     <div class="mb-2">
-      <div class="domain-wrapper" *ngFor="let domain of data; let i= index;">
+      <button class="domainTab text-center" (click)="onNewDomainClick('newDomain')" data-toggle="tooltip" data-placement="right" 
+      title="Configure a new Domain" [ngClass]="{activeTab:selectedDomainName == 'newDomain'}"><span class="new">
+        <img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/create_gm_red_24_1x.png" class="img">
+      </span>new
+       </button>
+      <div *ngFor="let domain of data; let i= index;">
         <div class="domain"  (click)="onDomainClick(domain.domainName)" [ngClass]="{activeDomain:domain.domainName == selectedDomainName}"> 
           {{domain.domainName}}  
         </div>
       </div>
 
-      <button class="domainTab text-center" (click)="onNewDomainClick('newDomain')" data-toggle="tooltip" data-placement="right" 
-              title="Configure a new Domain"> 
-        <span>+</span>
-      </button>
     </div>
 
 

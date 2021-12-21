@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./showdomainlist.component.scss']
 })
 export class ShowdomainlistComponent implements OnInit {
-  selectedDomainName:any;
+  selectedDomainName:any='People';
   data:any = [];
   showForm:boolean=false;
   userForm:FormGroup;
@@ -21,6 +21,7 @@ export class ShowdomainlistComponent implements OnInit {
 
   ngOnInit(): void {
      this.getDomain();
+     this.router.navigate([`showdetails/People`]);
   }
   ///////////////////////////////////////////////////
   value: number = 0.5;
@@ -53,7 +54,8 @@ export class ShowdomainlistComponent implements OnInit {
    this.selectedDomainName = domain;
   }
   onNewDomainClick(newDomain:String){
-     this.router.navigate(['newDomain'])
+     this.router.navigate(['newDomain']);
+     this.selectedDomainName = 'newDomain';
   }
 
 

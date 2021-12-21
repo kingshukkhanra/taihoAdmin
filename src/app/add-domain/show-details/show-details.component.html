@@ -1,4 +1,4 @@
-<div class="card mx-2 p-3">
+<div class="card p-3" style="margin-top: 3px;">
   <div class="ddetails text-center text-muted font-weight-bold" style="border-bottom: 1px solid rgb(243, 238, 238);">Domain Details</div>
   <ul class="nav nav-tabs">
     <li class="nav-item">
@@ -18,7 +18,7 @@
     </li>
   </ul>
 
-  <form [formGroup]="userForm">
+  <form [formGroup]="userForm" *ngIf="userForm">
     <div *ngIf="setsetting=='basic'">
       <div class="form-group">
         <label for="domain" class="font-weight-bold">Domain Name<span>*</span></label>
@@ -73,7 +73,7 @@
         formControlName="host" [class.is-invalid]="userForm.get('host').invalid && userForm.get('host').touched">
 
         <section *ngIf="userForm.get('host').invalid && userForm.get('host').touched">
-          <small class="text-danger" *ngIf="userForm.get('host').errors?.required">Host is Required</small>
+          <small class="text-danger" *ngIf="userForm.get('host').errors?.required">Host Name is Required</small>
         </section>
       </div>
 
@@ -81,9 +81,11 @@
         <label for="pcontract" class="font-weight-bold">Primary Email Contact<span>*</span></label>
         <input type="text" name="pcontract" class="form-control" 
           placeholder="Enter Primary Contract" #primaryEmailContact formControlName="primaryEmailContact"
-          [class.is-invalid]="userForm.get('primaryEmailContact').invalid && userForm.get('primaryEmailContact').touched">
+          [class.is-invalid]="userForm.get('primaryEmailContact').invalid && userForm.get('primaryEmailContact').touched"
+          pattern= "^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$">
 
           <section *ngIf="userForm.get('primaryEmailContact').invalid && userForm.get('primaryEmailContact').touched">
+            <small class="text-danger" *ngIf="userForm.get('primaryEmailContact').errors?.pattern">Primary Email pattern doesnot match</small>
             <small class="text-danger" *ngIf="userForm.get('primaryEmailContact').errors?.required">Primary Email Contact is Required</small>
           </section>
       </div>
@@ -92,9 +94,11 @@
         <label for="scontract" class="font-weight-bold">Secondary Email Contact</label>
         <input type="text" name="scontract" class="form-control" 
           placeholder="Enter Secondary Contract" #secondaryEmailContact formControlName="secondaryEmailContact"
-          [class.is-invalid]="userForm.get('secondaryEmailContact').invalid && userForm.get('secondaryEmailContact').touched">
+          [class.is-invalid]="userForm.get('secondaryEmailContact').invalid && userForm.get('secondaryEmailContact').touched"
+          pattern= "^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$">
 
           <section *ngIf="userForm.get('secondaryEmailContact').invalid && userForm.get('secondaryEmailContact').touched">
+            <small class="text-danger" *ngIf="userForm.get('secondaryEmailContact').errors?.pattern">Secondary Email pattern doesnot match</small>
             <small class="text-danger" *ngIf="userForm.get('secondaryEmailContact').errors?.required">Secondary Email Contact is Required</small>
           </section>
       </div>

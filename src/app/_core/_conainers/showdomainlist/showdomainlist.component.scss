@@ -1,26 +1,13 @@
-
-.tooltip-inner {
-  color: white;
-  background-color: #0dcaf0;
-  font-size: 13px;
-  }
-  .bs-tooltip-auto[x-placement^=top] .arrow:before, .bs-tooltip-top .arrow:before {
-  border-top-color: #ffc107 ;
-  }
 a{
   text-decoration: none;
 }
-.domain-wrapper{
-  display: inline;
 
-}
 .domain{
   color:  #6c757d;
-  font-size: 1.2rem;
-  font-weight: bold;
   cursor: pointer;
   &.activeDomain{
-    color: black
+    color: black;
+    font-weight: bold;
   }
   &:hover{
     color: yellowgreen;
@@ -31,27 +18,21 @@ a{
   margin-top: 3px;
   background-color:whitesmoke;
   font-weight: bold;
-  color: black;
-  // border: 2px solid  #0dcaf0;
+  color:  #6c757d;
   border-radius: 5px;
+  margin-bottom: 5px;
   cursor: pointer;
-
   &:hover{
     color: #ffc107;
     background-color: #6c757d;
   }
-
   &.activeTab{
-    color: black;
+    color: #ffc107;
     background-color: #6c757d;
     border: 1px solid #0dcaf0;
   }
 }
 
-.form-wrapper{
-    font-family: sans-serif;
-    margin-top: 5px;
-}
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
@@ -59,4 +40,15 @@ input[type=number]::-webkit-outer-spin-button {
 }
 label > span{
   color: red;
+}
+
+.new{
+  color: blueviolet;
+  font-weight: bold;
+}
+.img{
+  width: 10px; 
+  height: 10px; 
+  margin-right: 10px;
+  font-weight: bold;
 }

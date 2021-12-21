@@ -3,7 +3,7 @@
   <ul class="nav nav-tabs">
     <li class="nav-item">
       <a class="nav-link font-weight-bold mr-2"  (click)="changeSettings('basic')" [ngClass]="{active:setsetting == 'basic'}">
-        Basic SechangeSettings
+        Basic Settings
     </a>
     </li>
     <li class="nav-item">
@@ -136,7 +136,7 @@
       <div class="form-group">
         <button type="button" class="btn btn-sm btn-outline-success mr-3" 
         (click)="updateData(domainName,domainLabel,knowledgeBaseId,knowledgeBaseEndpointKey,confidenceThreshold,host,primaryEmailContact,
-                          secondaryEmailContact,helpText,maxResponsesInSearch,lookbackTimeForLog)" [disabled]="userForm.invalid">Update</button>
+                          secondaryEmailContact,helpText,maxResponsesInSearch,lookbackTimeForLog)" [disabled]="userForm.invalid">Submit</button>
         <button class="btn btn-sm btn-outline-warning ml-1"> Reset</button>
       </div>
       </div>
