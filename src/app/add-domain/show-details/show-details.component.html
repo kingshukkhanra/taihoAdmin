@@ -132,7 +132,7 @@
       <div class="form-group">
         <button type="button" class="btn btn-sm btn-outline-success mr-3" 
         (click)="updateData(domainLabel,knowledgeBaseId,knowledgeBaseEndpointKey,confidenceThreshold,host,primaryEmailContact,
-                          secondaryEmailContact,helpText,maxResponsesInSearch,lookbackTimeForLog)" [disabled]="userForm.invalid">Update</button>
+                          secondaryEmailContact,helpText,maxResponsesInSearch,lookbackTimeForLog)" [disabled]="userForm.invalid || userForm.pristine ">Update</button>
         <button class="btn btn-sm btn-outline-danger ml-1"> Delete</button>
       </div>
       </div>
