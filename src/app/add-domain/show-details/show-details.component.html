@@ -28,6 +28,11 @@
           <small class="text-danger" *ngIf="userForm.get('domainName').errors?.required">Domain Name is Required</small>
           </section>
       </div>
+      <div class="form-group">
+        <input class="mr-1" type="checkbox" #domainIsActive [value]="domainDetails[0].domainIsActive" 
+               [checked]="domainDetails[0].domainIsActive == 'y'">
+        <label for="domainIsActive" class="font-weight-bold">Domain Is Active</label>
+      </div>
 
       <div class="form-group">
         <label for="domainlevel" class="font-weight-bold">Domain Label<span>*</span></label>
@@ -132,7 +137,7 @@
       <div class="form-group">
         <button type="button" class="btn btn-sm btn-outline-success mr-3" 
         (click)="updateData(domainLabel,knowledgeBaseId,knowledgeBaseEndpointKey,confidenceThreshold,host,primaryEmailContact,
-                          secondaryEmailContact,helpText,maxResponsesInSearch,lookbackTimeForLog)" [disabled]="userForm.invalid || userForm.pristine ">Update</button>
+                          secondaryEmailContact,helpText,maxResponsesInSearch,lookbackTimeForLog,domainIsActive)" [disabled]="userForm.invalid || userForm.pristine ">Update</button>
         <button class="btn btn-sm btn-outline-danger ml-1"> Delete</button>
       </div>
       </div>

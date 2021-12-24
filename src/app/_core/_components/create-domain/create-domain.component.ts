@@ -5,6 +5,7 @@ import { Validators } from '@angular/forms';
 import { Options } from '@angular-slider/ngx-slider';
 import Swal from 'sweetalert2';
 import { AdmindataService } from '../../_services/admindata.service';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 @Component({
   selector: 'app-create-domain',
   templateUrl: './create-domain.component.html',
@@ -35,6 +36,10 @@ export class CreateDomainComponent implements OnInit {
   };
    
   ngOnInit(): void {
+    this.getDefaultFormValue();
+  }
+
+  getDefaultFormValue(){
     this.userForm = new FormGroup({
       domainName : new FormControl('',[Validators.required]),
       domainLabel : new FormControl('',[Validators.required]),
@@ -55,11 +60,14 @@ export class CreateDomainComponent implements OnInit {
 
 
   updateData(domainName,domainLabel,knowledgeBaseId,knowledgeBaseEndpointKey,confidenceThreshold,host,primaryEmailContact,
-             secondaryEmailContact,helpText,maxResponsesInSearch,lookbackTimeForLog){
+             secondaryEmailContact,helpText,maxResponsesInSearch,lookbackTimeForLog,domainIsActive){
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+  let active = (domainIsActive.checked)?"y":"n";
   let domainDetailsObj = {
     "domainName":domainName.value,
     "domainLabel":domainLabel.value,
+    "domainIsActive":active,
     "knowledgeBaseId":knowledgeBaseId.value,
     "knowledgeBaseEndpointKey":knowledgeBaseEndpointKey.value,
     "confidenceThreshold":confidenceThreshold.value,
@@ -77,8 +85,40 @@ export class CreateDomainComponent implements OnInit {
     text:' New Domain Sucessfully Created',
     icon:'success'
   });
+  console.log(domainDetailsObj);
 }
 
 
+/////////////////////////////////////////////////////////////////////////////////////////
+// dropdownList = [];
+// selectedItems = [];
+// dropdownSettings:IDropdownSettings = {};
+
+// getDropDownlist(){
+//   this.dropdownList = [
+//     { item_id: 1, item_text: 'Mumbai' },
+//     { item_id: 2, item_text: 'Bangaluru' },
+//     { item_id: 3, item_text: 'Pune' },
+//     { item_id: 4, item_text: 'Navsari' },
+//     { item_id: 5, item_text: 'New Delhi' }
+//   ];
+// }
+// getSelectedReasons(){
+//   this.selectedItems = [
+//     { item_id: 3, item_text: 'Pune' },
+//     { item_id: 4, item_text: 'Navsari' }
+//   ];
+// }
+// getDropdownFeatures(){
+//   this.dropdownSettings = {
+//     singleSelection: false,
+//     idField: 'item_id',
+//     textField: 'item_text',
+//     selectAllText: 'Select All',
+//     unSelectAllText: 'UnSelect All',
+//     itemsShowLimit: 3,
+//     allowSearchFilter: true
+//   };
+// }
 
 }

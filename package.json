@@ -24,6 +24,7 @@
     "cors": "^2.8.5",
     "jquery": "^3.6.0",
     "jquery-ui": "^1.13.0",
+    "ng-multiselect-dropdown": "^0.3.7",
     "rxjs": "~6.6.0",
     "sweetalert": "^2.1.2",
     "sweetalert2": "^11.3.0",

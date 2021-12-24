@@ -53,10 +53,11 @@ export class ShowDetailsComponent implements OnInit {
       this.adminSvc.getSelectedDomainDetails(selectedDomain).subscribe(a=>{
         this.newDomainDetails = a;
         this.domainDetails = this.newDomainDetails;
-  
+        console.log(this.domainDetails);
         this.userForm = new FormGroup({
           domainName : new FormControl(this.domainDetails[0].domainName,Validators.required),
           domainLabel : new FormControl(this.domainDetails[0].domainLabel,Validators.required),
+          domainIsActive: new FormControl(this.domainDetails[0].domainIsActive),
           knowledgebaseId : new FormControl(this.domainDetails[0].knowledgeBaseId,Validators.required),
           knowledgeBaseEndpointKey : new FormControl(this.domainDetails[0].knowledgeBaseEndpointKey,Validators.required),
           host : new FormControl(this.domainDetails[0].host,Validators.required),
@@ -70,10 +71,19 @@ export class ShowDetailsComponent implements OnInit {
   }
 
   updateData(domainLabel,knowledgeBaseId,knowledgeBaseEndpointKey,confidenceThreshold,host,primaryEmailContact,
-             secondaryEmailContact,helpText,maxResponsesInSearch,lookbackTimeForLog){
-   
+             secondaryEmailContact,helpText,maxResponsesInSearch,lookbackTimeForLog,domainIsActive){
+       
+              let active:string;
+              if(domainIsActive.checked){
+                active = "y";
+              }
+              else{
+                active = "n";
+              }
+
     let updateDetails = {
         "domainName": this.domainName,
+        "domainIsActive":active,
         "domainLabel":domainLabel.value,
         "knowledgeBaseId":knowledgeBaseId.value,
         "knowledgeBaseEndpointKey":knowledgeBaseEndpointKey.value,

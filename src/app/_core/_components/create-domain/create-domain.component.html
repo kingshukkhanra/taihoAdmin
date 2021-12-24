@@ -19,7 +19,7 @@
   </ul>
 
   <form [formGroup]="userForm">
-    <div *ngIf="setsetting=='basic'">
+    <div  *ngIf="setsetting=='basic'">
       <div class="form-group">
         <label for="domain" class="font-weight-bold">Domain Name<span>*</span></label>
         <input type="text" name="domain" class="form-control"  placeholder="Enter Domain Name"
@@ -28,7 +28,10 @@
           <small class="text-danger" *ngIf="userForm.get('domainName').errors?.required">Domain Name is Required</small>
           </section>
       </div>
-
+  <div class="form-group">
+    <input class="mr-1" type="checkbox" #domainIsActive>
+    <label for="domainIsActive" class="font-weight-bold">Domain Is Active</label> 
+  </div>
       <div class="form-group">
         <label for="domainlevel" class="font-weight-bold">Domain Label<span>*</span></label>
         <input type="text" name="domainlevel" class="form-control"  placeholder="Enter Domain Level"
@@ -116,7 +119,8 @@
 
       <div class="form-group">
         <label for="lookbackTimeForLog" class="font-weight-bold">Look Back Time For Log<span>*</span></label>
-        <input type="number" class="form-control" #lookbackTimeForLog  formControlName="lookbackTimeForLog"
+        <input type="number" class="form-control" #lookbackTimeForLog  
+        placeholder="Enter Look Back Time For Log" formControlName="lookbackTimeForLog"
         [class.is-invalid]="userForm.get('lookbackTimeForLog').invalid && userForm.get('lookbackTimeForLog').touched">
         <section *ngIf="userForm.get('lookbackTimeForLog').invalid && userForm.get('lookbackTimeForLog').touched">
           <small class="text-danger" *ngIf="userForm.get('lookbackTimeForLog').errors?.required">lookbackTimeForLog is Required</small>
@@ -133,10 +137,16 @@
           </section>
       </div>
 
+      <!-- <div class="form-group">
+        <label for="reason" class="font-weight-bold">Reason<span>*</span></label>
+        <ng-multiselect-dropdown [placeholder]="' please Choose a Reason'" [settings]="dropdownSettings" [data]="dropdownList">
+         </ng-multiselect-dropdown>
+      </div> -->
+
       <div class="form-group">
         <button type="button" class="btn btn-sm btn-outline-success mr-3" 
         (click)="updateData(domainName,domainLabel,knowledgeBaseId,knowledgeBaseEndpointKey,confidenceThreshold,host,primaryEmailContact,
-                          secondaryEmailContact,helpText,maxResponsesInSearch,lookbackTimeForLog)" [disabled]="userForm.invalid">Submit</button>
+                          secondaryEmailContact,helpText,maxResponsesInSearch,lookbackTimeForLog,domainIsActive)" [disabled]="userForm.invalid">Submit</button>
         <button class="btn btn-sm btn-outline-warning ml-1"> Reset</button>
       </div>
       </div>
