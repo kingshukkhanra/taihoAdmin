@@ -5,14 +5,16 @@
 export const environment = {
   production: false,
 
-  baseUrl: 'https://managebotconfig.azurewebsites.net',
-  deleteConfigbyDomainUrl:'https://managebotconfig.azurewebsites.net',//delete//
+  // baseUrl: 'https://managebotconfig.azurewebsites.net',
+  //getConfigByDomainUrl:'https://managebotconfig.azurewebsites.net/api/getConfigByDomain',//[GET, domainName=People]
   saveConfigbyDomainUrl:'https://managebotconfig.azurewebsites.net/api/saveConfigbyDomain',   //POST//
-  getConfigByDomainUrl:'https://managebotconfig.azurewebsites.net/api/getConfigByDomain',//[GET, domainName=People]
-  createDomainUrl:'https://managebotconfig.azurewebsites.net/api/putConfig' //[POST, domainName=People, helpMessage = my help message, etc etc.....]
+  createDomainUrl:'https://managebotconfig.azurewebsites.net/api/putConfig', //[POST, domainName=People, helpMessage = my help message, etc etc.....]
+  deleteConfigbyDomainUrl:'https://managebotconfig.azurewebsites.net',//delete//
+
+  baseUrl: 'https://managebotconfig.azurewebsites.net/api/getDomainNames',
+  getConfigByDomainUrl:'https://managebotconfig.azurewebsites.net/api/getConfigByDomainName'
 
 };
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

@@ -10,20 +10,22 @@ import { Observable } from 'rxjs';
 export class AdmindataService {
 
   adminUrl:string = environment.baseUrl;
-  deleteDomainUrl:string = environment.deleteConfigbyDomainUrl;
   domainDetailsUrl:string =environment.getConfigByDomainUrl;
   saveDomainUrl:string = environment.saveConfigbyDomainUrl;
   createDomainUrl:string = environment.createDomainUrl;
   constructor(private apiSvc: ApiService ,private http:HttpClient) { }
 
 getDomainName(){
-     let path:string = this.adminUrl + '/api/getAllConfig?code=VSMrZUYRrKD7nhtT45wivWcZLmJfSr9YMO635hULPqY1qyYdChbKng==';
-     return this.apiSvc.get(path);
+    //  let path:string = this.adminUrl + '/api/getAllConfig?code=VSMrZUYRrKD7nhtT45wivWcZLmJfSr9YMO635hULPqY1qyYdChbKng==';
+    //  return this.apiSvc.get(path);
+    let path:string = this.adminUrl + '?code=weY6Onpi38ttGakOPpTSk3vIIxHrzrWGVlZ06QiQHG558PSEQz/W5A=='
+    return this.apiSvc.get(path);
   }
-
 getSelectedDomainDetails(domainName) {
-   let path = this.domainDetailsUrl + '?code=HuoxeVo3vxQzWtzMesaWqywDJ8aVbJCF0atx0a4nI9XlMFDaTdVNOA==&domainName=' + domainName;
-   return this.apiSvc.get(path);
+  //  let path = this.domainDetailsUrl + '?code=HuoxeVo3vxQzWtzMesaWqywDJ8aVbJCF0atx0a4nI9XlMFDaTdVNOA==&domainName=' + domainName;
+  //  return this.apiSvc.get(path);
+  let path = this.domainDetailsUrl + '?code=aEadAKHKeaD5PesXAh1UZW3KYpQamwIAAJB6C70q51/TRaFzhAABow==&domainName=' + domainName;
+  return this.apiSvc.get(path);
 }
 
 updateSelectedDomainDetails(domainName:string,updateDomainDetails:any){
@@ -31,10 +33,6 @@ updateSelectedDomainDetails(domainName:string,updateDomainDetails:any){
   let path = this.saveDomainUrl+'?code=VSMrZUYRrKD7nhtT45wivWcZLmJfSr9YMO635hULPqY1qyYdChbKng==';
   // +domainName
   return this.apiSvc.post(path,updateDomainDetails,headers);
-}
-
-createNewDomain(){
-
 }
 
 }

@@ -53,11 +53,11 @@ export class ShowDetailsComponent implements OnInit {
       this.adminSvc.getSelectedDomainDetails(selectedDomain).subscribe(a=>{
         this.newDomainDetails = a;
         this.domainDetails = this.newDomainDetails;
-        console.log(this.domainDetails);
+        console.log(this.domainName,this.domainDetails);
         this.userForm = new FormGroup({
           domainName : new FormControl(this.domainDetails[0].domainName,Validators.required),
           domainLabel : new FormControl(this.domainDetails[0].domainLabel,Validators.required),
-          domainIsActive: new FormControl(this.domainDetails[0].domainIsActive),
+          domainIsActive: new FormControl(this.domainDetails[0].isDomainActive),
           knowledgebaseId : new FormControl(this.domainDetails[0].knowledgeBaseId,Validators.required),
           knowledgeBaseEndpointKey : new FormControl(this.domainDetails[0].knowledgeBaseEndpointKey,Validators.required),
           host : new FormControl(this.domainDetails[0].host,Validators.required),
@@ -83,7 +83,7 @@ export class ShowDetailsComponent implements OnInit {
 
     let updateDetails = {
         "domainName": this.domainName,
-        "domainIsActive":active,
+        "isDomainActive":active,
         "domainLabel":domainLabel.value,
         "knowledgeBaseId":knowledgeBaseId.value,
         "knowledgeBaseEndpointKey":knowledgeBaseEndpointKey.value,
@@ -96,7 +96,7 @@ export class ShowDetailsComponent implements OnInit {
         "lookbackTimeForLog":lookbackTimeForLog.value
     };
     this.adminSvc.updateSelectedDomainDetails(this.domainName,updateDetails).subscribe(data=>{
-      console.log(data);
+      //console.log(data);
     });
     Swal.fire({
       text:'Sucessfully Updated',

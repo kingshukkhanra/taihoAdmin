@@ -38,7 +38,7 @@
           #domainLabel formControlName="domainLabel" [class.is-invalid]="userForm.get('domainLabel').invalid && userForm.get('domainLabel').touched">
         <section *ngIf="userForm.get('domainLabel').invalid && userForm.get('domainLabel').touched">
             <small class="text-danger" *ngIf="userForm.get('domainLabel').errors?.required">Domain Label is Required</small>
-          </section>
+          </section> 
       </div>
 
       <div class="form-group">

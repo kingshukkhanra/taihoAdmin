@@ -67,7 +67,7 @@ export class CreateDomainComponent implements OnInit {
   let domainDetailsObj = {
     "domainName":domainName.value,
     "domainLabel":domainLabel.value,
-    "domainIsActive":active,
+    "isDomainActive":active,
     "knowledgeBaseId":knowledgeBaseId.value,
     "knowledgeBaseEndpointKey":knowledgeBaseEndpointKey.value,
     "confidenceThreshold":confidenceThreshold.value,
