@@ -14,6 +14,7 @@ import { AdmindataService } from './_core/_services/admindata.service';
 import { SendvalueService } from './_core/_services/sendvalue.service';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     HttpClientModule,
     NgxSliderModule,
     ReactiveFormsModule,
-    NgMultiSelectDropDownModule
+    NgMultiSelectDropDownModule.forRoot(),
+    FormsModule
   ],
   providers: [ApiService,AdmindataService,SendvalueService],
   bootstrap: [AppComponent]

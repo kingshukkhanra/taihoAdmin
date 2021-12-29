@@ -118,12 +118,21 @@
       </div>
 
       <div class="form-group">
+        <label for="Reasons" class="font-weight-bold">Reasons</label>
+        <ng-multiselect-dropdown [placeholder]="'Select Reasons'" [settings]="dropdownSettings" 
+           [data]="ReasonListNew" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+        </ng-multiselect-dropdown>
+        <!-- [(ngModel)]="selectedReasnos" -->
+      </div>
+
+      <div class="form-group">
         <label for="lookbackTimeForLog" class="font-weight-bold">Look Back Time For Log<span>*</span></label>
         <input type="number" class="form-control" #lookbackTimeForLog  
         placeholder="Enter Look Back Time For Log" formControlName="lookbackTimeForLog"
         [class.is-invalid]="userForm.get('lookbackTimeForLog').invalid && userForm.get('lookbackTimeForLog').touched">
         <section *ngIf="userForm.get('lookbackTimeForLog').invalid && userForm.get('lookbackTimeForLog').touched">
           <small class="text-danger" *ngIf="userForm.get('lookbackTimeForLog').errors?.required">lookbackTimeForLog is Required</small>
+          <small class="text-danger" *ngIf="userForm.get('lookbackTimeForLog').errors?.min">cannot be Zero</small>
         </section>
      </div>
 
@@ -137,11 +146,6 @@
           </section>
       </div>
 
-      <!-- <div class="form-group">
-        <label for="reason" class="font-weight-bold">Reason<span>*</span></label>
-        <ng-multiselect-dropdown [placeholder]="' please Choose a Reason'" [settings]="dropdownSettings" [data]="dropdownList">
-         </ng-multiselect-dropdown>
-      </div> -->
 
       <div class="form-group">
         <button type="button" class="btn btn-sm btn-outline-success mr-3" 

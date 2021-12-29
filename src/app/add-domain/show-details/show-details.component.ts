@@ -53,7 +53,7 @@ export class ShowDetailsComponent implements OnInit {
       this.adminSvc.getSelectedDomainDetails(selectedDomain).subscribe(a=>{
         this.newDomainDetails = a;
         this.domainDetails = this.newDomainDetails;
-        console.log(this.domainName,this.domainDetails);
+        //console.log(this.domainName,this.domainDetails);
         this.userForm = new FormGroup({
           domainName : new FormControl(this.domainDetails[0].domainName,Validators.required),
           domainLabel : new FormControl(this.domainDetails[0].domainLabel,Validators.required),
@@ -65,7 +65,7 @@ export class ShowDetailsComponent implements OnInit {
           secondaryEmailContact : new FormControl(this.domainDetails[0].secondaryEmailContact,Validators.required),
           helpText : new FormControl(this.domainDetails[0].helpText,Validators.required),
           maxResponsesInSearch : new FormControl(this.domainDetails[0].maxResponsesInSearch,Validators.required),
-          lookbackTimeForLog : new FormControl(this.domainDetails[0].lookbackTimeForLog,Validators.required)
+          lookbackTimeForLog : new FormControl(this.domainDetails[0].lookbackTimeForLog,[Validators.min(1),Validators.required])
         });
       });
   }
@@ -73,13 +73,13 @@ export class ShowDetailsComponent implements OnInit {
   updateData(domainLabel,knowledgeBaseId,knowledgeBaseEndpointKey,confidenceThreshold,host,primaryEmailContact,
              secondaryEmailContact,helpText,maxResponsesInSearch,lookbackTimeForLog,domainIsActive){
        
-              let active:string;
-              if(domainIsActive.checked){
-                active = "y";
-              }
-              else{
-                active = "n";
-              }
+              let active = (domainIsActive.checked)?"y":"n";
+              // if(domainIsActive.checked){
+              //   active = "y";
+              // }
+              // else{
+              //   active = "n";
+              // }
 
     let updateDetails = {
         "domainName": this.domainName,

@@ -7,13 +7,14 @@ export const environment = {
 
   // baseUrl: 'https://managebotconfig.azurewebsites.net',
   //getConfigByDomainUrl:'https://managebotconfig.azurewebsites.net/api/getConfigByDomain',//[GET, domainName=People]
-  saveConfigbyDomainUrl:'https://managebotconfig.azurewebsites.net/api/saveConfigbyDomain',   //POST//
-  createDomainUrl:'https://managebotconfig.azurewebsites.net/api/putConfig', //[POST, domainName=People, helpMessage = my help message, etc etc.....]
+  //saveConfigbyDomainUrl:'https://managebotconfig.azurewebsites.net/api/saveConfigbyDomain',   //POST//
+  //createDomainUrl:'https://managebotconfig.azurewebsites.net/api/putConfig', //[POST, domainName=People, helpMessage = my help message, etc etc.....]
   deleteConfigbyDomainUrl:'https://managebotconfig.azurewebsites.net',//delete//
 
   baseUrl: 'https://managebotconfig.azurewebsites.net/api/getDomainNames',
-  getConfigByDomainUrl:'https://managebotconfig.azurewebsites.net/api/getConfigByDomainName'
-
+  getConfigByDomainUrl:'https://managebotconfig.azurewebsites.net/api/getConfigByDomainName',
+  getReasonUrl:'https://managebotconfig.azurewebsites.net/api/getItemByName',
+  updateDomainUrl:'https://managebotconfig.azurewebsites.net/api/updateDomainConfigs'
 };
 /*
  * For easier debugging in development mode, you can import the following file

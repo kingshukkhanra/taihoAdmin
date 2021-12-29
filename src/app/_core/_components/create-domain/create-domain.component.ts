@@ -6,6 +6,7 @@ import { Options } from '@angular-slider/ngx-slider';
 import Swal from 'sweetalert2';
 import { AdmindataService } from '../../_services/admindata.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { } from '@angular/core';
 @Component({
   selector: 'app-create-domain',
   templateUrl: './create-domain.component.html',
@@ -16,6 +17,8 @@ export class CreateDomainComponent implements OnInit {
   setsetting:string = 'basic';
   domainName:string;
   userForm:FormGroup;
+  ReasonList:any=[];
+  ReasonListNew:any = [];
   constructor( private adminSvc:AdmindataService) { }
   value: number = 0.5;
   options: Options = {
@@ -37,6 +40,18 @@ export class CreateDomainComponent implements OnInit {
    
   ngOnInit(): void {
     this.getDefaultFormValue();
+    this.getReasonValues();
+  }
+
+  getReasonValues(){
+    this.adminSvc.getReasonValue().subscribe(data=>{
+      let temp = data[0].value;
+      this.ReasonList = temp.split(",");
+      for(let i=0;i<this.ReasonList.length;i++){
+          this.ReasonListNew.push({"reason_Id":i,"reason_Text":this.ReasonList[i]});
+      }
+    });
+    
   }
 
   getDefaultFormValue(){
@@ -50,7 +65,7 @@ export class CreateDomainComponent implements OnInit {
       secondaryEmailContact : new FormControl('',[Validators.required]),
       helpText : new FormControl('',[Validators.required]),
       maxResponsesInSearch : new FormControl('',[Validators.required]),
-      lookbackTimeForLog : new FormControl('',[Validators.required])
+      lookbackTimeForLog : new FormControl('',[Validators.min(1),Validators.required])
     });
   }
 
@@ -58,10 +73,8 @@ export class CreateDomainComponent implements OnInit {
       this.setsetting = val;
   }
 
-
   updateData(domainName,domainLabel,knowledgeBaseId,knowledgeBaseEndpointKey,confidenceThreshold,host,primaryEmailContact,
              secondaryEmailContact,helpText,maxResponsesInSearch,lookbackTimeForLog,domainIsActive){
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
  
   let active = (domainIsActive.checked)?"y":"n";
   let domainDetailsObj = {
@@ -85,40 +98,27 @@ export class CreateDomainComponent implements OnInit {
     text:' New Domain Sucessfully Created',
     icon:'success'
   });
-  console.log(domainDetailsObj);
 }
 
 
 /////////////////////////////////////////////////////////////////////////////////////////
-// dropdownList = [];
-// selectedItems = [];
-// dropdownSettings:IDropdownSettings = {};
+selectedReasons = [];
 
-// getDropDownlist(){
-//   this.dropdownList = [
-//     { item_id: 1, item_text: 'Mumbai' },
-//     { item_id: 2, item_text: 'Bangaluru' },
-//     { item_id: 3, item_text: 'Pune' },
-//     { item_id: 4, item_text: 'Navsari' },
-//     { item_id: 5, item_text: 'New Delhi' }
-//   ];
-// }
-// getSelectedReasons(){
-//   this.selectedItems = [
-//     { item_id: 3, item_text: 'Pune' },
-//     { item_id: 4, item_text: 'Navsari' }
-//   ];
-// }
-// getDropdownFeatures(){
-//   this.dropdownSettings = {
-//     singleSelection: false,
-//     idField: 'item_id',
-//     textField: 'item_text',
-//     selectAllText: 'Select All',
-//     unSelectAllText: 'UnSelect All',
-//     itemsShowLimit: 3,
-//     allowSearchFilter: true
-//   };
-// }
+dropdownSettings:IDropdownSettings = {
+  singleSelection: false,
+  idField: 'reason_Id',
+  textField: 'reason_Text',
+  selectAllText: 'Select All',
+  unSelectAllText: 'UnSelect All',
+  itemsShowLimit: 3,
+  allowSearchFilter: true
+};
+onItemSelect(item: any) {
+  console.log(item);
+}
+onSelectAll(items: any) {
+  console.log(items);
+}
+//////////////////////////////////////////////////////////////////////////////////////////
 
 }

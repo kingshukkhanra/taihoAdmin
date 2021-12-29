@@ -24,23 +24,23 @@ export class ShowdomainlistComponent implements OnInit {
      this.router.navigate([`showdetails/People`]);
   }
   ///////////////////////////////////////////////////
-  value: number = 0.5;
-  options: Options = {
-    showTicksValues: true,
-    stepsArray: [
-      { value: 0.0 },
-      { value: 0.1 },
-      { value: 0.2 },
-      { value: 0.3 },
-      { value: 0.4 },
-      { value: 0.5 },
-      { value: 0.6 },
-      { value: 0.7 },
-      { value: 0.8 },
-      { value: 0.9 },
-      { value: 1.0 }
-    ]
-  };
+  // value: number = 0.5;
+  // options: Options = {
+  //   showTicksValues: true,
+  //   stepsArray: [
+  //     { value: 0.0 },
+  //     { value: 0.1 },
+  //     { value: 0.2 },
+  //     { value: 0.3 },
+  //     { value: 0.4 },
+  //     { value: 0.5 },
+  //     { value: 0.6 },
+  //     { value: 0.7 },
+  //     { value: 0.8 },
+  //     { value: 0.9 },
+  //     { value: 1.0 }
+  //   ]
+  // };
 
   //////////////////////////////////////////////////
   getDomain(){
