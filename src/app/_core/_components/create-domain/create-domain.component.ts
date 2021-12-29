@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl } from '@angular/forms';
-import { createDomainModel } from 'src/app/_core/_models/create-domain-model.model';
 import { Validators } from '@angular/forms';
 import { Options } from '@angular-slider/ngx-slider';
 import Swal from 'sweetalert2';
 import { AdmindataService } from '../../_services/admindata.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { } from '@angular/core';
 @Component({
   selector: 'app-create-domain',
   templateUrl: './create-domain.component.html',
@@ -48,10 +46,9 @@ export class CreateDomainComponent implements OnInit {
       let temp = data[0].value;
       this.ReasonList = temp.split(",");
       for(let i=0;i<this.ReasonList.length;i++){
-          this.ReasonListNew.push({"reason_Id":i,"reason_Text":this.ReasonList[i]});
+          this.ReasonListNew.push({item_id:i+1,item_text:this.ReasonList[i]});
       }
     });
-    
   }
 
   getDefaultFormValue(){
@@ -65,7 +62,8 @@ export class CreateDomainComponent implements OnInit {
       secondaryEmailContact : new FormControl('',[Validators.required]),
       helpText : new FormControl('',[Validators.required]),
       maxResponsesInSearch : new FormControl('',[Validators.required]),
-      lookbackTimeForLog : new FormControl('',[Validators.min(1),Validators.required])
+      lookbackTimeForLog : new FormControl('',[Validators.min(1),Validators.required]),
+      reason : new FormControl(this.selectedReasons)
     });
   }
 
@@ -74,7 +72,7 @@ export class CreateDomainComponent implements OnInit {
   }
 
   updateData(domainName,domainLabel,knowledgeBaseId,knowledgeBaseEndpointKey,confidenceThreshold,host,primaryEmailContact,
-             secondaryEmailContact,helpText,maxResponsesInSearch,lookbackTimeForLog,domainIsActive){
+             secondaryEmailContact,helpText,maxResponsesInSearch,lookbackTimeForLog,domainIsActive,reasons){
  
   let active = (domainIsActive.checked)?"y":"n";
   let domainDetailsObj = {
@@ -94,6 +92,7 @@ export class CreateDomainComponent implements OnInit {
   this.adminSvc.updateSelectedDomainDetails(domainName,domainDetailsObj).subscribe(data=>{
     console.log(data);
   });
+  console.log(domainDetailsObj);
   Swal.fire({
     text:' New Domain Sucessfully Created',
     icon:'success'
@@ -102,22 +101,28 @@ export class CreateDomainComponent implements OnInit {
 
 
 /////////////////////////////////////////////////////////////////////////////////////////
-selectedReasons = [];
-
+selectedReasons = [ 
+  {item_id: 3, item_text: ' Irrelevant Results'},
+  {item_id: 1, item_text: 'No Results'}
+];
 dropdownSettings:IDropdownSettings = {
   singleSelection: false,
-  idField: 'reason_Id',
-  textField: 'reason_Text',
+  idField: 'item_id',
+  textField: 'item_text',
   selectAllText: 'Select All',
   unSelectAllText: 'UnSelect All',
   itemsShowLimit: 3,
   allowSearchFilter: true
 };
 onItemSelect(item: any) {
-  console.log(item);
+  //console.log(item);
+  this.selectedReasons.push(item);
+  console.log(this.selectedReasons);
 }
 onSelectAll(items: any) {
-  console.log(items);
+  //console.log(items);
+  this.selectedReasons.push(items);
+  console.log(this.selectedReasons);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 

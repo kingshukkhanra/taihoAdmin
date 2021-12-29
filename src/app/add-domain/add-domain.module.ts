@@ -7,6 +7,8 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { ApiService } from '../_core/_services/api.service';
 import { AdmindataService } from '../_core/_services/admindata.service';
 import { HttpClientModule } from '@angular/common/http';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { FormsModule } from '@angular/forms';
 const Routes: Routes = [
   {path : '',component :ShowDetailsComponent ,pathMatch: 'full'}
 ];
@@ -20,7 +22,9 @@ const Routes: Routes = [
     ReactiveFormsModule,
     NgxSliderModule,
     RouterModule.forChild(Routes),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    NgMultiSelectDropDownModule.forRoot()
   ]
 })
 export class AddDomainModule { 

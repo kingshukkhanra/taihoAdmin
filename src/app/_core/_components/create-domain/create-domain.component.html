@@ -119,10 +119,10 @@
 
       <div class="form-group">
         <label for="Reasons" class="font-weight-bold">Reasons</label>
-        <ng-multiselect-dropdown [placeholder]="'Select Reasons'" [settings]="dropdownSettings" 
-           [data]="ReasonListNew" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+        <ng-multiselect-dropdown *ngIf="ReasonListNew.length" [placeholder]="'Select Reasons'" name="Reasons"
+        [settings]="dropdownSettings" [data]="ReasonListNew" (onSelect)="onItemSelect($event)" 
+        (onSelectAll)="onSelectAll($event)" #reasons formControlName="reason">
         </ng-multiselect-dropdown>
-        <!-- [(ngModel)]="selectedReasnos" -->
       </div>
 
       <div class="form-group">
